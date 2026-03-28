@@ -68,42 +68,44 @@ class CreateAllTables extends Migration
         });
 
         // Insert OAuth clients
-        DB::table('oauth_clients')->insert([
-            [
-                'id' => 1,
-                'user_id' => null,
-                'name' => 'Personal Access Client',
-                'secret' => 'ZKuolvvXd5URLWv50mGAji3fxkCZUcexUXelssrT',
-                'provider' => null,
-                'redirect' => 'http://localhost',
-                'personal_access_client' => 1,
-                'password_client' => 0,
-                'revoked' => 0,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-            [
-                'id' => 2,
-                'user_id' => null,
-                'name' => 'MyClient',
-                'secret' => 'HcwEmn8BCt6QMcFiwqHsdQSzMZC0yR426GsWdyqw',
-                'provider' => null,
-                'redirect' => 'http://localhost/auth/callback',
-                'personal_access_client' => 0,
-                'password_client' => 0,
-                'revoked' => 0,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-        ]);
+        if (DB::table('oauth_clients')->count() === 0) {
+            DB::table('oauth_clients')->insert([
+                [
+                    'id' => 1,
+                    'user_id' => null,
+                    'name' => 'Personal Access Client',
+                    'secret' => 'ZKuolvvXd5URLWv50mGAji3fxkCZUcexUXelssrT',
+                    'provider' => null,
+                    'redirect' => 'http://localhost',
+                    'personal_access_client' => 1,
+                    'password_client' => 0,
+                    'revoked' => 0,
+                    'created_at' => date('Y-m-d H:i:s'),
+                    'updated_at' => date('Y-m-d H:i:s'),
+                ],
+                [
+                    'id' => 2,
+                    'user_id' => null,
+                    'name' => 'MyClient',
+                    'secret' => 'HcwEmn8BCt6QMcFiwqHsdQSzMZC0yR426GsWdyqw',
+                    'provider' => null,
+                    'redirect' => 'http://localhost/auth/callback',
+                    'personal_access_client' => 0,
+                    'password_client' => 0,
+                    'revoked' => 0,
+                    'created_at' => date('Y-m-d H:i:s'),
+                    'updated_at' => date('Y-m-d H:i:s'),
+                ],
+            ]);
 
         // Insert personal access client
         DB::table('oauth_personal_access_clients')->insert([
             'id' => 1,
             'client_id' => 1,
-            'created_at' => now(),
-            'updated_at' => now(),
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s'),
         ]);
+        }
     }
 
     public function down()
