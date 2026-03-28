@@ -13,6 +13,15 @@
 |
 */
 //$router->get('/', function () use ($router) {});
+$router->get('/', function () use ($router) {
+    return 'Gateway is working!';
+});
+
+// Temporarily remove middleware for testing
+$router->get('/users1', 'User1Controller@index');
+$router->get('/users2', 'User2Controller@index');
+
+/*
 $router->group(['middleware' => 'client_credentials'], function () use ($router) {
     $router->get('/users1', 'User1Controller@index');
     $router->post('/users1', 'User1Controller@add');
@@ -27,4 +36,5 @@ $router->group(['middleware' => 'client_credentials'], function () use ($router)
     $router->delete('/users2/{id}', 'User2Controller@delete');
 });
  
+*/
 
