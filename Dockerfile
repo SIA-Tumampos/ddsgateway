@@ -11,4 +11,4 @@ COPY . .
 
 EXPOSE 8080
 
-CMD php artisan migrate --force && php -S 0.0.0.0:8080 -t public
+CMD php artisan migrate --force --seed 2>&1 && php -S 0.0.0.0:8080 -t public
