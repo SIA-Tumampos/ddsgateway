@@ -102,7 +102,7 @@ $app->register(Illuminate\Encryption\EncryptionServiceProvider::class);
 //$app->register(Laravel\Passport\PassportServiceProvider::class);
 //$app->register(Dusterio\LumenPassport\PassportServiceProvider::class);
 //\Dusterio\LumenPassport\LumenPassport::routes($app->router);
-if (false && class_exists('\Dusterio\LumenPassport\LumenPassport')) {
+if (class_exists('\Dusterio\LumenPassport\LumenPassport')) {
     \Laravel\Passport\Passport::loadKeysFrom(storage_path());
 
     $app->singleton(\League\OAuth2\Server\Repositories\ClientRepositoryInterface::class,\Laravel\Passport\Bridge\ClientRepository::class);
