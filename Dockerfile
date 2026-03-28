@@ -9,4 +9,6 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 WORKDIR /var/www/html
 COPY . .
 
-CMD php -S 0.0.0.0:${PORT:-8000} -t public
+EXPOSE 8080
+
+CMD php -S 0.0.0.0:8080 -t public
